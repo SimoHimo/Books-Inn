@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "69866154753",
+    "project_id": "books-and-literature",
+    "storage_bucket": "books-and-literature.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:69866154753:android:4fa9de1fb200950eadc900",
+        "android_client_info": {
+          "package_name": "com.example.books_and_literature"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "69866154753-skuirfh49l145a661cd15k1sis1j7ird.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.books_and_literature",
+            "certificate_hash": "1ceaacdbc73fb3c63f3511f853a963572dc7cb3d"
+          }
+        },
+        {
+          "client_id": "69866154753-e2nkff2473qq85tum9h96i2dc50u5003.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBd36pyibR7UWN7bIhdK5lTIxfbc-6MIYk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "69866154753-e2nkff2473qq85tum9h96i2dc50u5003.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
