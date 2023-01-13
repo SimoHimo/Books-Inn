@@ -1,10 +1,11 @@
-import 'package:books_and_literature/Screens/HomeScreen.dart';
-import 'package:books_and_literature/Screens/LoadScreen.dart';
+import 'package:books_and_literature/Screens/homescreen.dart';
+import 'package:books_and_literature/Screens/loadscreen.dart';
 import 'package:books_and_literature/Screens/assetbooks.dart';
 import 'package:books_and_literature/Screens/firebase.dart';
 import 'package:books_and_literature/Screens/pdf_viewer.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'Screens/networkscreen.dart';
 import 'api/pdf_api.dart';
 
 void main()async {
@@ -25,6 +26,7 @@ class Myapp extends StatelessWidget {
         "/assetbooks": (context)=> AssetBooks(),
         "/loadscreen": (context)=> LoadScreen(),
         "/firebasebooks": (context)=> FirebaseBooks(),
+        "/networkbooks": (context)=> NetworkBooks(),
 
       },
     );
