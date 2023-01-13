@@ -1,3 +1,4 @@
+import 'package:books_and_literature/Screens/assetbooks.dart';
 import 'package:books_and_literature/pdf_viewer.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -49,10 +50,11 @@ class _MyhomepageState extends State<Myhomepage> {
 
 
               ElevatedButton(
-                  onPressed: () async {
-                    final path ="assets/advs.pdf";
-                    final file = await PDFApi.loadAsset(path);
-                    openPDF(context, file);
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const AssetBooks()),
+                    );
                   }, child: Text("Asset Book")),
 
 
@@ -83,6 +85,13 @@ class _MyhomepageState extends State<Myhomepage> {
                     openPDF(context, file);
 
                   }, child: Text("Firebase Book")),
+
+
+              ElevatedButton(onPressed: (){Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const AssetBooks()),
+              );}, child: Text("Test")
+              )
             ],
           ),
         ));
