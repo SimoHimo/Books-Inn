@@ -24,13 +24,13 @@ class _MyhomepageState extends State<Myhomepage> {
         drawer: Drawer(
           child: Column(
             children: [
-              const SizedBox(
+              SizedBox(
                 height: 100,
               ),
-              const Text("data"),
-              const Text("data"),
-              const Text("data"),
-              const Text("data"),
+              Text("data"),
+              Text("data"),
+              Text("data"),
+              Text("data"),
             ],
           ),
         ),
@@ -61,7 +61,7 @@ class _MyhomepageState extends State<Myhomepage> {
                         onPressed: () {
                           Navigator.pushNamed(context, "/assetbooks");
                         },
-                        child: const Text("App Books")),
+                        child: Text("App Books")),
                     ElevatedButton(
                         onPressed: () {
                           Navigator.pushNamed(context, "/firebasebooks");
@@ -90,7 +90,7 @@ class _MyhomepageState extends State<Myhomepage> {
                           final file = await PDFApi.loadFromNetwork(url);
                           openPDF(context, file);
                         },
-                        child: const Text("Online Books")),
+                        child: Text("Online Books")),
                   ],
                 ),
               ),
@@ -102,7 +102,7 @@ class _MyhomepageState extends State<Myhomepage> {
                           builder: (context) => const AssetBooks()),
                     );
                   },
-                  child: const Text("Test"))
+                  child: Text("Test"))
             ],
           ),
         ));
