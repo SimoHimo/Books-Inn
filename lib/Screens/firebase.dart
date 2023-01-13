@@ -4,15 +4,15 @@ import 'package:path/path.dart';
 import '../api/pdf_api.dart';
 import 'pdf_viewer.dart';
 
-class AssetBooks extends StatefulWidget {
+class FirebaseBooks extends StatefulWidget {
 
-  const AssetBooks({Key? key}) : super(key: key);
+  const FirebaseBooks({Key? key}) : super(key: key);
 
   @override
-  State<AssetBooks> createState() => _AssetBooksState();
+  State<FirebaseBooks> createState() => _FirebaseBooksState();
 }
 
-class _AssetBooksState extends State<AssetBooks> {
+class _FirebaseBooksState extends State<FirebaseBooks> {
   @override
   Widget build(BuildContext context) {
     void openPDF(BuildContext context, file) => Navigator.of(context).push(
