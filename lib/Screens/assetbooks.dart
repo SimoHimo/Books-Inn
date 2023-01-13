@@ -25,7 +25,7 @@ class _AssetBooksState extends State<AssetBooks> {
           title: const Text("Classic Books"),
         ),
         body: Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: const EdgeInsets.all(20.0),
           child: Container(
 
             // color: Colors.amber,
@@ -34,8 +34,8 @@ class _AssetBooksState extends State<AssetBooks> {
                 shrinkWrap: true,
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 3,
-                  crossAxisSpacing: 25.0,
-                  mainAxisSpacing: 25.0,
+                  crossAxisSpacing: 20.0,
+                  mainAxisSpacing: 20.0,
                 ),
                 itemCount: 12,
                 itemBuilder: (context, index) {

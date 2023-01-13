@@ -48,12 +48,12 @@ class _FirebaseBooksState extends State<FirebaseBooks> {
 
                     child: ElevatedButton(
                         onPressed: () async {
-                          final path ="assets/books/advs.pdf";
-                          final file = await PDFApi.loadAsset(path);
-
-
+                          final url = "Alice_in_Wonderland.pdf";
+                          final file = await PDFApi.loadFirebase(url);
+                          if(file== null) return;
                           openPDF(context, file);
-                        }, child: Text("advs")),
+
+                        }, child: Text("Firebase Book")),
                   );
                 },
               )
