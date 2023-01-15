@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # books_and_literature
 
 A new Flutter project.
@@ -14,3 +15,7 @@ A few resources to get you started if this is your first Flutter project:
 For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
+=======
+# Books-and-Literature
+a PDF reader with online and local pdf book reading feature. it also has in-built classic and popular books and a Firebase book server
+>>>>>>> 799978a42c23f6016354d20acb7f2a0a3b61aec5

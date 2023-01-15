@@ -17,6 +17,8 @@ void main()async {
 class Myapp extends StatelessWidget {
   const Myapp({Key? key}) : super(key: key);
 
+
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -24,7 +26,7 @@ class Myapp extends StatelessWidget {
       routes: {
         "/homepage": (context)=> Myhomepage(),
         "/assetbooks": (context)=> AssetBooks(),
-        "/loadscreen": (context)=> LoadScreen(),
+        "/loadingscreen": (context)=> LoadScreen(),
         "/firebasebooks": (context)=> FirebaseBooks(),
         "/networkbooks": (context)=> NetworkBooks(),
 

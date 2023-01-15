@@ -1,11 +1,11 @@
-
+import 'package:books_and_literature/buttons.dart';
+import 'package:flutter/services.dart' show rootBundle;
 import 'package:flutter/material.dart';
-import 'package:path/path.dart';
 import '../api/pdf_api.dart';
 import 'pdf_viewer.dart';
+import 'package:path/path.dart' as path;
 
 class AssetBooks extends StatefulWidget {
-
   const AssetBooks({Key? key}) : super(key: key);
 
   @override
@@ -13,52 +13,70 @@ class AssetBooks extends StatefulWidget {
 }
 
 class _AssetBooksState extends State<AssetBooks> {
+  List<String> assetFilePaths = [];
+
+  @override
+  void initState() {
+    super.initState();
+    _getAssetFilePaths();
+  }
+
+  void _getAssetFilePaths() async {
+    String fileString = await rootBundle.loadString('assets/files.txt');
+    List<String> filePaths = fileString.split(', ');
+    setState(() {
+      assetFilePaths.addAll(filePaths);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     void openPDF(BuildContext context, file) => Navigator.of(context).push(
         MaterialPageRoute(builder: (context) => PDFViewerPage(file: file)));
-
-
-
+    const Color lightcolor = Color(0xfff5f9df);
+    const Color darkcolor = Color(0xff051320);
+    var height = (MediaQuery.of(context).size.height) / 100;
+    var width = (MediaQuery.of(context).size.width) / 100;
     return Scaffold(
         appBar: AppBar(
+          backgroundColor: darkcolor,
           title: const Text("Classic Books"),
         ),
-        body: Padding(
-          padding: const EdgeInsets.all(20.0),
-          child: Container(
-
-            // color: Colors.amber,
-              child: GridView.builder(
-                physics: const BouncingScrollPhysics(),
-                shrinkWrap: true,
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 3,
-                  crossAxisSpacing: 20.0,
-                  mainAxisSpacing: 20.0,
-                ),
-                itemCount: 12,
-                itemBuilder: (context, index) {
-                  return Container(
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),  // radius of 10
-                        color: Colors.green  // green as background color
-
-                    ),
-
-                    child: ElevatedButton(
-                        onPressed: () async {
-                          final path ="assets/books/advs.pdf";
+        body: Container(
+          height: double.infinity,
+          width: double.infinity,
+          color: lightcolor,
+          child: Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: GridView.builder(
+              physics: const BouncingScrollPhysics(),
+              shrinkWrap: true,
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 3,
+                crossAxisSpacing:20.0,
+                mainAxisSpacing: 20.0,
+                childAspectRatio: 0.75
+              ),
+              itemCount: assetFilePaths.length,
+              itemBuilder: (context, index) {
+                return assetFilePaths == null
+                    ? const Center(child: CircularProgressIndicator())
+                    : BookButton(
+                        height: height,
+                        width: width,
+                        thumbnail: Icon(Icons.book,color: Colors.white,size: 40,),
+                        name: path
+                            .basenameWithoutExtension(assetFilePaths[index]),
+                        onTap: () async {
+                          final path = "assets/books/${assetFilePaths[index]}";
                           final file = await PDFApi.loadAsset(path);
 
-
                           openPDF(context, file);
-                        }, child: Text("advs")),
-                  );
-                },
-              )
+                        },
+                      ); //book button here
+              },
+            ),
           ),
-        )
-    );
+        ));
   }
 }

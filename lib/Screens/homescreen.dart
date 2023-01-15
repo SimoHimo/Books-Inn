@@ -45,14 +45,20 @@ class _MyhomepageState extends State<Myhomepage> {
                 height: height*32,
                 width: width * 85,
                 decoration: BoxDecoration(
+                  border: Border.all(color: darkcolor,width:2.0),
                   borderRadius: BorderRadius.circular(20.0),
                   color: darkcolor,
+                  image: const DecorationImage(
+                    image: AssetImage(
+                        'assets/images/feature_art.jpg'),
+                    fit: BoxFit.fill,
+                  ),
                 ),
               ),
               Container(
                 height: height * 50,
                 child: GridView.count(
-                  physics: NeverScrollableScrollPhysics(),
+                  physics: BouncingScrollPhysics(),//NeverScrollableScrollPhysics(),
                   primary: false,
                   padding: const EdgeInsets.all(20),
                   crossAxisSpacing: 25,
@@ -94,6 +100,15 @@ class _MyhomepageState extends State<Myhomepage> {
                         onTap: () {
                           Navigator.pushNamed(context, "/networkbooks");
                         }),
+                    InkButton(
+                      height: height,
+                      width: width,
+                      name: "test",
+                      icon: Icons.ac_unit_rounded,
+                      onTap: () {
+                        Navigator.pushNamed(context, "/loadingscreen");
+                      },
+                    )
                   ],
                 ),
               )
@@ -149,12 +164,4 @@ class _MyhomepageState extends State<Myhomepage> {
         ));
   }
 }
-// InkButton(
-// height: height,
-// width: width,
-// name: "test",
-// icon: Icons.ac_unit_rounded,
-// onTap: () {
-// Navigator.pushNamed(context, "/assetbooks");
-// },
-// )
+
