@@ -1,7 +1,7 @@
 <<<<<<< HEAD
 # books_and_literature
 
-A new Flutter project.
+a PDF reader with online and local pdf book reading feature. it also has in-built classic and popular books and a Firebase book server
 
 ## Getting Started
 
