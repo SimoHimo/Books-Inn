@@ -1,7 +1,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.books_and_literature">
     <uses-permission android:name="android.permission.WAKE_LOCK"/>
-   <application
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+
+
+    <application
+        android:requestLegacyExternalStorage="true"
         android:label="books_and_literature"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">

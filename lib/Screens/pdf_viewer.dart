@@ -20,6 +20,8 @@ class _PDFViewerPageState extends State<PDFViewerPage> {
 
   @override
   Widget build(BuildContext context) {
+    var height = (MediaQuery.of(context).size.height) / 100;
+    var width = (MediaQuery.of(context).size.width) / 100;
     final name = basename(widget.file.path);
     final text = '${indexPage + 1}/$pages';
     return Scaffold(
@@ -58,20 +60,47 @@ class _PDFViewerPageState extends State<PDFViewerPage> {
       body: SizedBox(
         height: double.infinity,
         width: double.infinity,
-        child: PDFView(
-          onRender: (pages) => setState(() => this.pages = pages ?? 0),
-          onViewCreated: (controller) =>
-              setState(() => this.controller = controller),
-          onPageChanged: (indexPage, _) =>
-              setState(() => this.indexPage = indexPage ?? 0),
-          filePath: widget.file.path,
-          swipeHorizontal: true,
-          enableSwipe: true,
-          fitPolicy: FitPolicy.BOTH,
-          pageSnap: false,
-          //pageFling: false,
-          autoSpacing: false,
-        ),
+        child:Stack(
+          children: [
+            PDFView(
+              onRender: (pages) => setState(() => this.pages = pages ?? 0),
+              onViewCreated: (controller) =>
+                  setState(() => this.controller = controller),
+              onPageChanged: (indexPage, _) =>
+                  setState(() => this.indexPage = indexPage ?? 0),
+              filePath: widget.file.path,
+              swipeHorizontal: true,
+              enableSwipe: true,
+              fitPolicy: FitPolicy.BOTH,
+              pageSnap: false,
+              //pageFling: false,
+              autoSpacing: false,
+            ),
+
+            Positioned(
+              height: height*100,
+              width: width*40,
+              left: 0,
+              child: InkWell(
+
+                onTap: (){final page = indexPage == 0?pages : indexPage - 1;
+
+                controller.setPage(page);},
+              ),
+            ),
+            Positioned(
+              height: height*100,
+              width: width*40,
+              right: 0,
+              child: InkWell(
+
+                onTap: (){
+                  final page = indexPage ==pages-1 ? 0 : indexPage + 1;
+                controller.setPage(page);},
+              ),
+            )
+          ],
+        )
       ),
     );
   }

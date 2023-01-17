@@ -1,8 +1,8 @@
 import 'package:books_and_literature/buttons.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:flutter/material.dart';
-import '../api/pdf_api.dart';
-import 'pdf_viewer.dart';
+import '../../api/pdf_api.dart';
+import '../pdf_viewer.dart';
 import 'package:path/path.dart' as path;
 
 class AssetBooks extends StatefulWidget {
@@ -18,11 +18,11 @@ class _AssetBooksState extends State<AssetBooks> {
   @override
   void initState() {
     super.initState();
-    _getAssetFilePaths();
+    getAssetFilePaths();
   }
 
-  void _getAssetFilePaths() async {
-    String fileString = await rootBundle.loadString('assets/files.txt');
+  void getAssetFilePaths() async {
+    String fileString = await rootBundle.loadString('assets/filelists/files.txt');
     List<String> filePaths = fileString.split(', ');
     setState(() {
       assetFilePaths.addAll(filePaths);
@@ -31,12 +31,14 @@ class _AssetBooksState extends State<AssetBooks> {
 
   @override
   Widget build(BuildContext context) {
-    void openPDF(BuildContext context, file) => Navigator.of(context).push(
-        MaterialPageRoute(builder: (context) => PDFViewerPage(file: file)));
+    // void openPDF(BuildContext context, file) => Navigator.of(context).push(
+    //     MaterialPageRoute(builder: (context) => PDFViewerPage(file: file)));
+
     const Color lightcolor = Color(0xfff5f9df);
     const Color darkcolor = Color(0xff051320);
     var height = (MediaQuery.of(context).size.height) / 100;
     var width = (MediaQuery.of(context).size.width) / 100;
+
     return Scaffold(
         appBar: AppBar(
           backgroundColor: darkcolor,
@@ -71,7 +73,7 @@ class _AssetBooksState extends State<AssetBooks> {
                           final path = "assets/books/${assetFilePaths[index]}";
                           final file = await PDFApi.loadAsset(path);
 
-                          openPDF(context, file);
+                          PDFApi.openPDF(context, file);
                         },
                       ); //book button here
               },

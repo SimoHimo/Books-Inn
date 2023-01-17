@@ -45,6 +45,7 @@ dependencies:
   http: ^0.13.5
   file_picker: ^5.2.5
   yaml: ^3.1.1
+  permission_handler: ^10.2.0
 
 
   firebase_core: ^2.4.1
@@ -78,7 +79,7 @@ flutter:
   assets:
      - assets/books/
      - assets/images/
-     - assets/files.txt
+     - assets/filelists/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
