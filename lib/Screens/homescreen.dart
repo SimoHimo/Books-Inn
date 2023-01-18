@@ -24,7 +24,7 @@ class _MyhomepageState extends State<Myhomepage> {
     Color lightcolor = const Color(0xfff5f9df);
     Color darkcolor = const Color(0xff051320);
 
-    void _launchURL(url) async {
+    void launchURL(url) async {
 
       if (await canLaunchUrl(url)) {
         await launchUrl(url);
@@ -64,21 +64,21 @@ class _MyhomepageState extends State<Myhomepage> {
                 leading: const Icon(Icons.message),
                 title: const Text('Contact us'),
                 onTap: (){
-                  _launchURL(Uri.parse('https://www.facebook.com/Mishkatul.Haque.Siam/'));
+                  launchURL(Uri.parse('https://www.facebook.com/Mishkatul.Haque.Siam/'));
                 },
               ),
               ListTile(
                 leading: const Icon(Icons.account_circle),
                 title: const Text('About Us'),
                 onTap: (){
-                  _launchURL(Uri.parse('https://github.com/SimoHimo'));
+                  launchURL(Uri.parse('https://github.com/SimoHimo'));
                 },
               ),
               ListTile(
                 leading: const Icon(Icons.adb_outlined),
                 title: const Text('Source Code'),
                 onTap: (){
-                  _launchURL(Uri.parse('https://github.com/SimoHimo/Books-and-Literature'));
+                  launchURL(Uri.parse('https://github.com/SimoHimo/Books-and-Literature'));
                 },)
 
             ],
@@ -91,7 +91,7 @@ class _MyhomepageState extends State<Myhomepage> {
         body: Padding(
           padding: const EdgeInsets.all(10.0),
           child: SingleChildScrollView(
-            physics: NeverScrollableScrollPhysics(),
+            physics: const NeverScrollableScrollPhysics(),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -115,7 +115,7 @@ class _MyhomepageState extends State<Myhomepage> {
                 SizedBox(
                   height: height * 50,
                   child: GridView.count(
-                    physics: NeverScrollableScrollPhysics(),//BouncingScrollPhysics(),
+                    physics: const NeverScrollableScrollPhysics(),//BouncingScrollPhysics(),
                     primary: false,
                     padding: const EdgeInsets.all(20),
                     crossAxisSpacing: 25,
@@ -145,7 +145,7 @@ class _MyhomepageState extends State<Myhomepage> {
                         name: "Device Book",
                         onTap: () async {
                           final file = await PDFApi.pickFile();
-                          if (file == null) return;
+                          if(!mounted)return;
                           openPDF(context, file);
                         },
                       ),

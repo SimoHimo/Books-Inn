@@ -61,18 +61,16 @@ class _FirebaseBooksState extends State<FirebaseBooks> {
               ),
               itemCount: firebaseFilePaths.length,
               itemBuilder: (context, index) {
-                return firebaseFilePaths == null
-                    ? const Center(child: CircularProgressIndicator())
-                    : BookButton(
+                return BookButton(
                   height: height,
                   width: width,
-                  thumbnail: Icon(Icons.book,color: Colors.white,size: 40,),
+                  thumbnail: const Icon(Icons.book,color: Colors.white,size: 40,),
                   name: firebaseFilePaths[index],
                   onTap: () async {
                     Navigator.pushNamed(context, "/loadingscreen");
                     final url = firebaseFilePaths[index];
                     final file = await PDFApi.loadFirebase(url);
-                    if(file== null) return;
+                    if(!mounted)return;
                     PDFApi.openPDF(context, file);
 
                   },

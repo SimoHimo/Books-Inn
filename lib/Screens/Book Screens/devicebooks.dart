@@ -1,6 +1,5 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:path_provider/path_provider.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 class DeviceBooks extends StatefulWidget {
@@ -11,7 +10,6 @@ class DeviceBooks extends StatefulWidget {
 }
 
 class _DeviceBooksState extends State<DeviceBooks> {
-
   List<String> pdfFiles = [];
 
   Future<void> collectPDFs() async {
@@ -22,7 +20,7 @@ class _DeviceBooksState extends State<DeviceBooks> {
     }
     if (status == PermissionStatus.granted) {
       try {
-        String path= '/storage/emulated/0';
+        String path = '/storage/emulated/0';
         if (Platform.isAndroid) {
           path = '/storage/emulated/0';
         } else if (Platform.isIOS) {
@@ -46,21 +44,22 @@ class _DeviceBooksState extends State<DeviceBooks> {
           }
         }
       } catch (e) {
-        print(e);
+        // ignored, really.
       }
-    }}
+    }
+  }
+
   @override
   void initState() {
     super.initState();
     collectPDFs();
   }
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: ElevatedButton(onPressed: (){print(pdfFiles);}, child: Text("press")),
+        child: ElevatedButton(onPressed: () {}, child: const Text("press")),
       ),
     );
   }

@@ -2,7 +2,6 @@ import 'package:books_and_literature/buttons.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:flutter/material.dart';
 import '../../api/pdf_api.dart';
-import '../pdf_viewer.dart';
 import 'package:path/path.dart' as path;
 
 class AssetBooks extends StatefulWidget {
@@ -61,18 +60,16 @@ class _AssetBooksState extends State<AssetBooks> {
               ),
               itemCount: assetFilePaths.length,
               itemBuilder: (context, index) {
-                return assetFilePaths == null
-                    ? const Center(child: CircularProgressIndicator())
-                    : BookButton(
+                return BookButton(
                         height: height,
                         width: width,
-                        thumbnail: Icon(Icons.book,color: Colors.white,size: 40,),
+                        thumbnail: const Icon(Icons.book,color: Colors.white,size: 40,),
                         name: path
                             .basenameWithoutExtension(assetFilePaths[index]),
                         onTap: () async {
                           final path = "assets/books/${assetFilePaths[index]}";
                           final file = await PDFApi.loadAsset(path);
-
+                          if(!mounted)return;
                           PDFApi.openPDF(context, file);
                         },
                       ); //book button here

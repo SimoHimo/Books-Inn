@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class InkButton extends StatelessWidget {
-  InkButton(
+  const InkButton(
       {Key? key,
       required this.height,
       required this.width,
@@ -10,7 +10,7 @@ class InkButton extends StatelessWidget {
       required this.onTap})
       : super(key: key);
 
-  VoidCallback onTap;
+  final VoidCallback onTap;
 
   final double height;
   final double width;
@@ -61,7 +61,7 @@ class InkButton extends StatelessWidget {
               ),
               Text(
                 name,
-                style: TextStyle(color: Colors.white, fontSize: 16),
+                style: const TextStyle(color: Colors.white, fontSize: 16),
               )
             ],
           ),
@@ -75,7 +75,7 @@ class InkButton extends StatelessWidget {
 
 
 class InkButton2 extends StatelessWidget {
-  InkButton2(
+  const InkButton2(
       {Key? key,
         required this.height,
         required this.width,
@@ -83,7 +83,7 @@ class InkButton2 extends StatelessWidget {
         required this.onTap})
       : super(key: key);
 
-  VoidCallback onTap;
+  final VoidCallback onTap;
 
   final double height;
   final double width;
@@ -123,7 +123,7 @@ class InkButton2 extends StatelessWidget {
         child: Center(
           child: Text(
             name,
-            style: TextStyle(color: Colors.white, fontSize: 18),
+            style: const TextStyle(color: Colors.white, fontSize: 18),
           ),
         ),
       ),
@@ -138,7 +138,7 @@ class InkButton2 extends StatelessWidget {
 
 
 class BookButton extends StatelessWidget {
-  BookButton(
+  const BookButton(
       {Key? key,
       required this.thumbnail,
       required this.name,
@@ -146,7 +146,7 @@ class BookButton extends StatelessWidget {
       required this.height,
       required this.width})
       : super(key: key);
-  VoidCallback onTap;
+  final VoidCallback onTap;
   final Widget thumbnail;
   final String name;
   final double height;
@@ -192,7 +192,7 @@ class BookButton extends StatelessWidget {
               Text(
                 name,
                   overflow: TextOverflow.ellipsis,
-                  style: TextStyle(color: Colors.white,),
+                  style: const TextStyle(color: Colors.white,),
               )
             ],
           ),

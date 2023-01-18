@@ -3,15 +3,12 @@ import 'package:books_and_literature/Screens/homescreen.dart';
 import 'package:books_and_literature/Screens/loadscreen.dart';
 import 'package:books_and_literature/Screens/Book%20Screens/assetbooks.dart';
 import 'package:books_and_literature/Screens/Book%20Screens/firebasebooks.dart';
-import 'package:books_and_literature/Screens/pdf_viewer.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'Screens/Book Screens/assetbooks.dart';
 import 'Screens/Book Screens/networkbooks.dart';
-import 'api/pdf_api.dart';
 
 void main()async {
-  runApp(Myapp());
+  runApp(const Myapp());
   await Firebase.initializeApp();
 
 }
@@ -27,21 +24,21 @@ class Myapp extends StatelessWidget {
 
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(backgroundColor:Color(0xfff5f9df),accentColor: Color(0xff051320) ),
+      theme: ThemeData(backgroundColor:const Color(0xfff5f9df),),
       initialRoute:"/homepage" ,
       routes: {
-        "/homepage": (context)=> Myhomepage(),
-        "/assetbooks": (context)=> AssetBooks(),
-        "/devicebooks": (context)=> DeviceBooks(),
-        "/firebasebooks": (context)=> FirebaseBooks(),
-        "/loadingscreen": (context)=> LoadScreen(),
-        "/networkbooks": (context)=> NetworkBooks(),
+        "/homepage": (context)=> const Myhomepage(),
+        "/assetbooks": (context)=> const AssetBooks(),
+        "/devicebooks": (context)=> const DeviceBooks(),
+        "/firebasebooks": (context)=> const FirebaseBooks(),
+        "/loadingscreen": (context)=> const LoadScreen(),
+        "/networkbooks": (context)=> const NetworkBooks(),
 
       },
     );
   }
 }
 
-Color lightcolor = Color(0xfff5f9df);
-Color darkcolor = Color(0xff051320);
+Color lightcolor = const Color(0xfff5f9df);
+Color darkcolor = const Color(0xff051320);
 

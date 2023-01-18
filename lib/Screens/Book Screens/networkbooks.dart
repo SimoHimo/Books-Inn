@@ -16,13 +16,13 @@ class _NetworkBooksState extends State<NetworkBooks> {
   Widget build(BuildContext context) {
     var height = (MediaQuery.of(context).size.height) / 100;
     var width = (MediaQuery.of(context).size.width) / 100;
-    Color lightcolor = Color(0xfff5f9df);
-    Color darkcolor = Color(0xff051320);
+    Color lightcolor = const Color(0xfff5f9df);
+    Color darkcolor = const Color(0xff051320);
     return Scaffold(
       resizeToAvoidBottomInset: true,
 
       appBar: AppBar(
-        title: Text("Online Reader"),
+        title: const Text("Online Reader"),
         backgroundColor: darkcolor,
       ),
       body: Container(
@@ -74,15 +74,16 @@ class _NetworkBooksState extends State<NetworkBooks> {
                 if(url.endsWith(".pdf")==true){
                   Navigator.pushNamed(context, "/loadingscreen");
                   final file = await PDFApi.loadFromNetwork(url);
+                  if(!mounted)return;
                   PDFApi.openPDF(context, file);}
-                else{print("no no no");}
+
               },
                   ),
               SizedBox(height: height*15,),
-              Text("Have to read a pdf, but dont want to save it in your device?",style: TextStyle(fontWeight: FontWeight.bold,color: Colors.black54),),
-              Text("We got you covered",style: TextStyle(fontWeight: FontWeight.bold,color: Colors.black54,fontSize: 18),),
+              const Text("Have to read a pdf, but dont want to save it in your device?",style: TextStyle(fontWeight: FontWeight.bold,color: Colors.black54),),
+              const Text("We got you covered",style: TextStyle(fontWeight: FontWeight.bold,color: Colors.black54,fontSize: 18),),
               SizedBox(height: height*35,),
-              Text("tip:search your book name and add filetype:pdf at the end",style: TextStyle(color: Colors.black54),),
+              const Text("tip:search your book name and add filetype:pdf at the end",style: TextStyle(color: Colors.black54),),
 
 
 
