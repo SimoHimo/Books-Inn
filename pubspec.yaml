@@ -46,6 +46,9 @@ dependencies:
   file_picker: ^5.2.5
   yaml: ^3.1.1
   permission_handler: ^10.2.0
+  url_launcher: ^6.1.7
+
+
 
 
   firebase_core: ^2.4.1

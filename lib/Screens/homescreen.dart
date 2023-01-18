@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../buttons.dart';
 import '../api/pdf_api.dart';
 import 'pdf_viewer.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class Myhomepage extends StatefulWidget {
   const Myhomepage({Key? key}) : super(key: key);
@@ -22,6 +23,15 @@ class _MyhomepageState extends State<Myhomepage> {
     var width = (MediaQuery.of(context).size.width) / 100;
     Color lightcolor = const Color(0xfff5f9df);
     Color darkcolor = const Color(0xff051320);
+
+    void _launchURL(url) async {
+
+      if (await canLaunchUrl(url)) {
+        await launchUrl(url);
+      } else {
+        throw 'Could not launch $url';
+      }
+    }
 
     return Scaffold(
         resizeToAvoidBottomInset: true,
@@ -44,21 +54,32 @@ class _MyhomepageState extends State<Myhomepage> {
                   ),
                 ),
               ),
+              Divider(
+                color: darkcolor,
+              ),
+              SizedBox(
+                height: height*5,
+              ),
               ListTile(
                 leading: const Icon(Icons.message),
-                title: const Text('Messages'),
-                onTap: (){},
+                title: const Text('Contact us'),
+                onTap: (){
+                  _launchURL(Uri.parse('https://www.facebook.com/Mishkatul.Haque.Siam/'));
+                },
               ),
               ListTile(
                 leading: const Icon(Icons.account_circle),
-                title: const Text('Profile'),
-                onTap: (){},
+                title: const Text('About Us'),
+                onTap: (){
+                  _launchURL(Uri.parse('https://github.com/SimoHimo'));
+                },
               ),
               ListTile(
-                leading: const Icon(Icons.settings),
-                title: const Text('Settings'),
-                onTap: (){},
-              ),
+                leading: const Icon(Icons.adb_outlined),
+                title: const Text('Source Code'),
+                onTap: (){
+                  _launchURL(Uri.parse('https://github.com/SimoHimo/Books-and-Literature'));
+                },)
 
             ],
           ),
