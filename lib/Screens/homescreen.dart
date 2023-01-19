@@ -78,7 +78,7 @@ class _MyhomepageState extends State<Myhomepage> {
                 leading: const Icon(Icons.adb_outlined),
                 title: const Text('Source Code'),
                 onTap: (){
-                  launchURL(Uri.parse('https://github.com/SimoHimo/Books-and-Literature'));
+                  launchURL(Uri.parse('https://github.com/SimoHimo/Books-Inn'));
                 },)
 
             ],
