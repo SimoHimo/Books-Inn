@@ -30,6 +30,7 @@ class _NetworkBooksState extends State<NetworkBooks> {
         height: height*100,
         width: width*100,
         child: SingleChildScrollView(
+          physics: NeverScrollableScrollPhysics(),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
@@ -79,10 +80,25 @@ class _NetworkBooksState extends State<NetworkBooks> {
 
               },
                   ),
-              SizedBox(height: height*15,),
+              SizedBox(height: height*7,),
+              Container(
+                height: height*35,
+                width: width * 85,
+                decoration: const BoxDecoration(
+                  // border: Border.all(color: darkcolor,width:2.0),
+                  // borderRadius: BorderRadius.circular(20.0),
+                  // color: darkcolor,
+                  image: DecorationImage(
+                    image: AssetImage(
+                        'assets/images/clip.png'),
+                    fit: BoxFit.fitHeight,
+                  ),
+                ),
+              ),
+              SizedBox(height: height*4),
               const Text("Have to read a pdf, but dont want to save it in your device?",style: TextStyle(fontWeight: FontWeight.bold,color: Colors.black54),),
               const Text("We got you covered",style: TextStyle(fontWeight: FontWeight.bold,color: Colors.black54,fontSize: 18),),
-              SizedBox(height: height*35,),
+              SizedBox(height: height*4),
               const Text("tip:search your book name and add filetype:pdf at the end",style: TextStyle(color: Colors.black54),),
 
 

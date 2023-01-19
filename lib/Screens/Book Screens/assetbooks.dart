@@ -1,8 +1,12 @@
+
 import 'package:books_and_literature/buttons.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:flutter/material.dart';
+
+import 'package:thumbnailer/thumbnailer.dart';
 import '../../api/pdf_api.dart';
 import 'package:path/path.dart' as path;
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class AssetBooks extends StatefulWidget {
   const AssetBooks({Key? key}) : super(key: key);
@@ -18,8 +22,15 @@ class _AssetBooksState extends State<AssetBooks> {
   void initState() {
     super.initState();
     getAssetFilePaths();
+    Thumbnailer.addCustomMimeTypesToIconDataMappings(<String, IconData>{
+      'custom/mimeType': FontAwesomeIcons.key,
+    });
   }
-
+  final List<Tab> myTabs = <Tab>[
+    const Tab(text: 'Icons'),
+    const Tab(text: 'Images'),
+    const Tab(text: 'Creation Strategies'),
+  ];
   void getAssetFilePaths() async {
     String fileString = await rootBundle.loadString('assets/filelists/files.txt');
     List<String> filePaths = fileString.split(', ');
@@ -63,7 +74,16 @@ class _AssetBooksState extends State<AssetBooks> {
                 return BookButton(
                         height: height,
                         width: width,
-                        thumbnail: const Icon(Icons.book,color: Colors.white,size: 40,),
+                        thumbnail:Thumbnail(
+                          dataResolver: () async {
+                            return (await DefaultAssetBundle.of(context).load("assets/books/${assetFilePaths[index]}")) .buffer.asUint8List();
+                            },
+                          mimeType: 'application/pdf',
+                          widgetSize: height*11.5,
+                          useWrapper: true,
+                          decoration: WidgetDecoration(wrapperSize:height*10,),
+
+                        ),//const Icon(Icons.book,color: darkcolor,size: 40,),
                         name: path
                             .basenameWithoutExtension(assetFilePaths[index]),
                         onTap: () async {

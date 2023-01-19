@@ -64,7 +64,7 @@ class _FirebaseBooksState extends State<FirebaseBooks> {
                 return BookButton(
                   height: height,
                   width: width,
-                  thumbnail: const Icon(Icons.book,color: Colors.white,size: 40,),
+                  thumbnail: const Icon(Icons.book,color: darkcolor,size: 50,),
                   name: firebaseFilePaths[index],
                   onTap: () async {
                     Navigator.pushNamed(context, "/loadingscreen");

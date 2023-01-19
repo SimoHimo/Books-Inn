@@ -86,7 +86,10 @@ class _MyhomepageState extends State<Myhomepage> {
         ),
         appBar: AppBar(
           backgroundColor: darkcolor,
-          title: const Text("Books inn"),
+          title: SizedBox(
+            height: height*28,
+            width: width*30,
+            child: Image.asset('assets/images/light.png', fit: BoxFit.cover),),
         ),
         body: Padding(
           padding: const EdgeInsets.all(10.0),
@@ -96,22 +99,22 @@ class _MyhomepageState extends State<Myhomepage> {
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                SizedBox(height: height*3,),
+
                 Container(
-                  height: height*35,
+                  height: height*40,
                   width: width * 85,
-                  decoration: BoxDecoration(
-                    border: Border.all(color: darkcolor,width:2.0),
-                    borderRadius: BorderRadius.circular(20.0),
-                    color: darkcolor,
-                    image: const DecorationImage(
+                  decoration: const BoxDecoration(
+                    // border: Border.all(color: darkcolor,width:2.0),
+                    // borderRadius: BorderRadius.circular(20.0),
+                    // color: darkcolor,
+                    image:  DecorationImage(
                       image: AssetImage(
-                          'assets/images/feature_art.jpg'),
-                      fit: BoxFit.fitHeight,
+                          'assets/images/feature art.png'),
+                      fit: BoxFit.fitWidth,
                     ),
                   ),
                 ),
-                SizedBox(height: height*4,),
+                SizedBox(height: height*2,),
                 SizedBox(
                   height: height * 50,
                   child: GridView.count(
@@ -125,7 +128,7 @@ class _MyhomepageState extends State<Myhomepage> {
                       InkButton(
                           height: height,
                           width: width,
-                          icon: Icons.book,
+                          icon: Icons.menu_book,
                           name: "App Book",
                           onTap: () {
                             Navigator.pushNamed(context, "/assetbooks");
@@ -133,7 +136,7 @@ class _MyhomepageState extends State<Myhomepage> {
                       InkButton(
                           height: height,
                           width: width,
-                          icon: Icons.book_online,
+                          icon: Icons.cloud_done,
                           name: "Server Book",
                           onTap: () {
                             Navigator.pushNamed(context, "/firebasebooks");
@@ -141,18 +144,19 @@ class _MyhomepageState extends State<Myhomepage> {
                       InkButton(
                         height: height,
                         width: width,
-                        icon: Icons.bookmark,
+                        icon: Icons.send_to_mobile_rounded,
                         name: "Device Book",
                         onTap: () async {
                           final file = await PDFApi.pickFile();
                           if(!mounted)return;
+                          if(file==null) return;
                           openPDF(context, file);
                         },
                       ),
                       InkButton(
                           height: height,
                           width: width,
-                          icon: Icons.bookmarks,
+                          icon: Icons.book_online,
                           name: "Online Book",
                           onTap: () {
                             Navigator.pushNamed(context, "/networkbooks");

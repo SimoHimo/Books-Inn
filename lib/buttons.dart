@@ -1,3 +1,4 @@
+import 'package:books_and_literature/main.dart';
 import 'package:flutter/material.dart';
 
 class InkButton extends StatelessWidget {
@@ -70,6 +71,8 @@ class InkButton extends StatelessWidget {
     );
   }
 }
+
+
 
 
 
@@ -157,8 +160,8 @@ class BookButton extends StatelessWidget {
     const Color textColor = Color(0xfff5f9df);
     const Color buttonColor = Color(0xff051320);
     return Container(
-      height: height * 5,
-      width: width * 7,
+      height: height * 4,
+      width: width * 6,
       decoration: BoxDecoration(
         boxShadow: [
           BoxShadow(
@@ -178,24 +181,45 @@ class BookButton extends StatelessWidget {
           ), //BoxShadow
         ],
         borderRadius: BorderRadius.circular(25.0),
+        border: Border.all(color: darkcolor, ),
         color: buttonColor,
       ),
       child: InkWell(
         onTap: onTap,
-        child: Padding(
-          padding: const EdgeInsets.fromLTRB(15, 25, 15, 0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: <Widget>[
-              thumbnail,
-              Text(
-                name,
-                  overflow: TextOverflow.ellipsis,
-                  style: const TextStyle(color: Colors.white,),
-              )
-            ],
-          ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Container(
+              decoration: BoxDecoration(
+                  color: lightcolor,
+                borderRadius: BorderRadius.vertical(top: Radius.circular(25))
+              ),
+
+                height: height * 12,
+                width: width * 30,
+
+                child: Center(child: thumbnail)),
+
+            Center(
+              child: Container(
+                  decoration: BoxDecoration(
+
+                      borderRadius: BorderRadius.vertical(bottom: Radius.circular(25))
+                  ),
+
+                  height: height * 4.3,
+                  width: width * 20,
+
+                  child: Center(
+                    child: Text(
+                      name,
+                      overflow: TextOverflow.ellipsis,
+                      style: const TextStyle(color: Colors.white,),
+                    ),
+                  ),),
+            ),
+          ],
         ),
       ),
     );

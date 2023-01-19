@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_pdfview/flutter_pdfview.dart';
 import 'package:path/path.dart';
@@ -22,10 +21,13 @@ class _PDFViewerPageState extends State<PDFViewerPage> {
   Widget build(BuildContext context) {
     var height = (MediaQuery.of(context).size.height) / 100;
     var width = (MediaQuery.of(context).size.width) / 100;
+    Color lightcolor = const Color(0xfff5f9df);
+    Color darkcolor = const Color(0xff051320);
     final name = basename(widget.file.path);
     final text = '${indexPage + 1}/$pages';
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: darkcolor,
         title: Text(name),
         actions: pages >= 2
             ? [
@@ -78,9 +80,10 @@ class _PDFViewerPageState extends State<PDFViewerPage> {
             ),
 
             Positioned(
-              height: height*100,
-              width: width*40,
+              height: height*30,
+              width: width*30,
               left: 0,
+              bottom: 0,
               child: InkWell(
 
                 onTap: (){final page = indexPage == 0?pages : indexPage - 1;
@@ -89,9 +92,10 @@ class _PDFViewerPageState extends State<PDFViewerPage> {
               ),
             ),
             Positioned(
-              height: height*100,
-              width: width*40,
+              height: height*30,
+              width: width*30,
               right: 0,
+              bottom: 0,
               child: InkWell(
 
                 onTap: (){
