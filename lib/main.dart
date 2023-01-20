@@ -7,33 +7,28 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'Screens/Book Screens/networkbooks.dart';
 
-void main()async {
+void main() async {
   runApp(const Myapp());
   await Firebase.initializeApp();
-
 }
 
 class Myapp extends StatelessWidget {
   const Myapp({Key? key}) : super(key: key);
 
-
-
   @override
   Widget build(BuildContext context) {
-
-
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(backgroundColor:const Color(0xfff5f9df),),
-      initialRoute:"/homepage" ,
+      theme: ThemeData(
+        backgroundColor: const Color(0xfff5f9df),
+      ),
+      initialRoute: "/homepage",
       routes: {
-        "/homepage": (context)=> const Myhomepage(),
-        "/assetbooks": (context)=> const AssetBooks(),
-        "/devicebooks": (context)=> const DeviceBooks(),
-        "/firebasebooks": (context)=> const FirebaseBooks(),
-        "/loadingscreen": (context)=> const LoadScreen(),
-        "/networkbooks": (context)=> const NetworkBooks(),
-
+        "/homepage": (context) => const Myhomepage(),
+        "/assetbooks": (context) => const AssetBooks(),
+        "/devicebooks": (context) => const DeviceBooks(),
+        "/firebasebooks": (context) => const FirebaseBooks(),
+        "/loadingscreen": (context) => const LoadScreen(),
+        "/networkbooks": (context) => const NetworkBooks(),
       },
     );
   }
@@ -41,4 +36,3 @@ class Myapp extends StatelessWidget {
 
 Color lightcolor = const Color(0xfff5f9df);
 Color darkcolor = const Color(0xff051320);
-

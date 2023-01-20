@@ -33,7 +33,8 @@ class PDFApi {
       allowedExtensions: ['pdf'],
     );
     if (result == null) return null;
-    String path = result.paths.first??"error"; //"error is default value. don't know what it'll do,but removing this will cause a headache
+    String path = result.paths.first ??
+        "error"; //"error is default value. don't know what it'll do,but removing this will cause a headache
     return File(path);
   }
 
@@ -46,14 +47,18 @@ class PDFApi {
 
   //Load Firebase File
   static Future<File?> loadFirebase(String url) async {
-    try{final refPDF = FirebaseStorage.instance.ref().child(url);
-    final bytes = await refPDF.getData();
+    try {
+      final refPDF = FirebaseStorage.instance.ref().child(url);
+      final bytes = await refPDF.getData();
 
-    return _storeFile(url, bytes!);}
-        catch(e){return null;}
+      return _storeFile(url, bytes!);
+    } catch (e) {
+      return null;
+    }
   }
-  static void openPDF(BuildContext context, file) => Navigator.of(context).pushAndRemoveUntil(
-      MaterialPageRoute(builder: (context) => PDFViewerPage(file: file)),
-      ModalRoute.withName("/homepage")
-  );
+
+  static void openPDF(BuildContext context, file) =>
+      Navigator.of(context).pushAndRemoveUntil(
+          MaterialPageRoute(builder: (context) => PDFViewerPage(file: file)),
+          ModalRoute.withName("/homepage"));
 }

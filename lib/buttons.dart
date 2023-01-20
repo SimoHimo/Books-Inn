@@ -72,18 +72,13 @@ class InkButton extends StatelessWidget {
   }
 }
 
-
-
-
-
-
 class InkButton2 extends StatelessWidget {
   const InkButton2(
       {Key? key,
-        required this.height,
-        required this.width,
-        required this.name,
-        required this.onTap})
+      required this.height,
+      required this.width,
+      required this.name,
+      required this.onTap})
       : super(key: key);
 
   final VoidCallback onTap;
@@ -134,12 +129,6 @@ class InkButton2 extends StatelessWidget {
   }
 }
 
-
-
-
-
-
-
 class BookButton extends StatelessWidget {
   const BookButton(
       {Key? key,
@@ -181,7 +170,9 @@ class BookButton extends StatelessWidget {
           ), //BoxShadow
         ],
         borderRadius: BorderRadius.circular(25.0),
-        border: Border.all(color: darkcolor, ),
+        border: Border.all(
+          color: darkcolor,
+        ),
         color: buttonColor,
       ),
       child: InkWell(
@@ -191,33 +182,30 @@ class BookButton extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Container(
-              decoration: BoxDecoration(
-                  color: lightcolor,
-                borderRadius: BorderRadius.vertical(top: Radius.circular(25))
-              ),
-
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius:
+                        BorderRadius.vertical(top: Radius.circular(25))),
                 height: height * 12,
                 width: width * 30,
-
                 child: Center(child: thumbnail)),
-
             Center(
               child: Container(
-                  decoration: BoxDecoration(
-
-                      borderRadius: BorderRadius.vertical(bottom: Radius.circular(25))
-                  ),
-
-                  height: height * 4.3,
-                  width: width * 20,
-
-                  child: Center(
-                    child: Text(
-                      name,
-                      overflow: TextOverflow.ellipsis,
-                      style: const TextStyle(color: Colors.white,),
+                decoration: BoxDecoration(
+                    borderRadius:
+                        BorderRadius.vertical(bottom: Radius.circular(25))),
+                height: height * 4.3,
+                width: width * 20,
+                child: Center(
+                  child: Text(
+                    name,
+                    overflow: TextOverflow.ellipsis,
+                    style: const TextStyle(
+                      color: Colors.white,
                     ),
-                  ),),
+                  ),
+                ),
+              ),
             ),
           ],
         ),

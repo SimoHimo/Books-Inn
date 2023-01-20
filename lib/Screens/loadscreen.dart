@@ -13,16 +13,14 @@ class _LoadScreenState extends State<LoadScreen> {
     return Scaffold(
       //appBar: AppBar(backgroundColor:Colors.black54,centerTitle: true,title: Text("Preparing files",style: TextStyle(color: Colors.white)),),
       body: Center(
-
         child: Container(
-
           height: double.infinity,
           width: double.infinity,
           decoration: const BoxDecoration(
             color: Color(0xfff5f9df),
             image: DecorationImage(
-              fit: BoxFit.fitWidth,
-              image: AssetImage("assets/images/loadscreen.gif")),
+                fit: BoxFit.fitWidth,
+                image: AssetImage("assets/images/loadscreen.gif")),
           ),
         ),
       ),

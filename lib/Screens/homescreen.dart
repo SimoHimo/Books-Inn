@@ -12,8 +12,6 @@ class Myhomepage extends StatefulWidget {
 }
 
 class _MyhomepageState extends State<Myhomepage> {
-
-
   @override
   Widget build(BuildContext context) {
     void openPDF(BuildContext context, file) => Navigator.of(context).push(
@@ -25,7 +23,6 @@ class _MyhomepageState extends State<Myhomepage> {
     Color darkcolor = const Color(0xff051320);
 
     void launchURL(url) async {
-
       if (await canLaunchUrl(url)) {
         await launchUrl(url);
       } else {
@@ -41,15 +38,14 @@ class _MyhomepageState extends State<Myhomepage> {
           child: ListView(
             children: [
               Container(
-                height: height*20,
+                height: height * 20,
                 width: width * 50,
                 decoration: BoxDecoration(
                   // border: Border.all(color: darkcolor,width:2.0),
                   // borderRadius: BorderRadius.circular(20.0),
                   color: lightcolor,
                   image: const DecorationImage(
-                    image: AssetImage(
-                        'assets/images/big.png'),
+                    image: AssetImage('assets/images/big.png'),
                     fit: BoxFit.fitHeight,
                   ),
                 ),
@@ -58,38 +54,51 @@ class _MyhomepageState extends State<Myhomepage> {
                 color: darkcolor,
               ),
               SizedBox(
-                height: height*5,
+                height: height * 5,
               ),
               ListTile(
-                leading: const Icon(Icons.message),
-                title: const Text('Contact us'),
-                onTap: (){
-                  launchURL(Uri.parse('https://www.facebook.com/Mishkatul.Haque.Siam/'));
+                leading: Image(
+                  image: AssetImage("assets/images/instagram.png"),
+                  height: height * 3.8,
+                ),
+                title: const Text('Contact us', style: TextStyle(fontSize: 16)),
+                onTap: () {
+                  launchURL(Uri.parse(
+                      'https://www.instagram.com/syedmishkatulhaque/'));
                 },
               ),
               ListTile(
-                leading: const Icon(Icons.account_circle),
-                title: const Text('About Us'),
-                onTap: (){
-                  launchURL(Uri.parse('https://github.com/SimoHimo'));
+                leading: Image(
+                  image: AssetImage("assets/images/Linkedin.png"),
+                  height: height * 3.8,
+                ),
+                title: const Text('About Us', style: TextStyle(fontSize: 16)),
+                onTap: () {
+                  launchURL(Uri.parse(
+                      'https://www.linkedin.com/in/syed-mishkatul-haque/'));
                 },
               ),
               ListTile(
-                leading: const Icon(Icons.adb_outlined),
-                title: const Text('Source Code'),
-                onTap: (){
+                leading: Image(
+                  image: AssetImage("assets/images/Github.png"),
+                  height: height * 3.8,
+                ),
+                title:
+                    const Text('Source Code', style: TextStyle(fontSize: 16)),
+                onTap: () {
                   launchURL(Uri.parse('https://github.com/SimoHimo/Books-Inn'));
-                },)
-
+                },
+              )
             ],
           ),
         ),
         appBar: AppBar(
           backgroundColor: darkcolor,
           title: SizedBox(
-            height: height*28,
-            width: width*30,
-            child: Image.asset('assets/images/light.png', fit: BoxFit.cover),),
+            height: height * 28,
+            width: width * 30,
+            child: Image.asset('assets/images/light.png', fit: BoxFit.cover),
+          ),
         ),
         body: Padding(
           padding: const EdgeInsets.all(10.0),
@@ -99,26 +108,27 @@ class _MyhomepageState extends State<Myhomepage> {
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-
                 Container(
-                  height: height*40,
+                  height: height * 40,
                   width: width * 85,
                   decoration: const BoxDecoration(
                     // border: Border.all(color: darkcolor,width:2.0),
                     // borderRadius: BorderRadius.circular(20.0),
                     // color: darkcolor,
-                    image:  DecorationImage(
-                      image: AssetImage(
-                          'assets/images/feature art.png'),
+                    image: DecorationImage(
+                      image: AssetImage('assets/images/feature art.png'),
                       fit: BoxFit.fitWidth,
                     ),
                   ),
                 ),
-                SizedBox(height: height*2,),
+                SizedBox(
+                  height: height * 2,
+                ),
                 SizedBox(
                   height: height * 50,
                   child: GridView.count(
-                    physics: const NeverScrollableScrollPhysics(),//BouncingScrollPhysics(),
+                    physics: const NeverScrollableScrollPhysics(),
+                    //BouncingScrollPhysics(),
                     primary: false,
                     padding: const EdgeInsets.all(20),
                     crossAxisSpacing: 25,
@@ -148,8 +158,8 @@ class _MyhomepageState extends State<Myhomepage> {
                         name: "Device Book",
                         onTap: () async {
                           final file = await PDFApi.pickFile();
-                          if(!mounted)return;
-                          if(file==null) return;
+                          if (!mounted) return;
+                          if (file == null) return;
                           openPDF(context, file);
                         },
                       ),
@@ -169,11 +179,9 @@ class _MyhomepageState extends State<Myhomepage> {
                       //     onTap: () {
                       //       Navigator.pushNamed(context, "/devicebooks");
                       //     }),
-
                     ],
                   ),
                 )
-
 
                 // InkButton(
                 //   height: height,
@@ -184,7 +192,6 @@ class _MyhomepageState extends State<Myhomepage> {
                 //     Navigator.pushNamed(context, "/loadingscreen");
                 //   },
                 // )
-
 
                 // SizedBox(
                 //   height: height * 10,
@@ -238,4 +245,3 @@ class _MyhomepageState extends State<Myhomepage> {
         ));
   }
 }
-

@@ -34,78 +34,80 @@ class _PDFViewerPageState extends State<PDFViewerPage> {
                 Center(
                   child: Text(text),
                 ),
-                IconButton(
-                    onPressed: () {
-                      //pressing left on first page will go to the last page.
-                      final page = indexPage == 0?pages : indexPage - 1;
-
-                      controller.setPage(page);
-                    },
-                    icon: const Icon(
-                      Icons.chevron_left,
-                      size: 32,
-                    )),
-                IconButton(
-                    onPressed: () {
-                      //pressing right on last page  will go to the first,
-                      final page = indexPage ==pages-1 ? 0 : indexPage + 1;
-
-                      controller.setPage(page);
-                    },
-                    icon: const Icon(
-                      Icons.chevron_right,
-                      size: 32,
-                    ))
+                SizedBox(
+                  width: width * 5,
+                )
+                // IconButton(
+                //     onPressed: () {
+                //       //pressing left on first page will go to the last page.
+                //       final page = indexPage == 0?pages : indexPage - 1;
+                //
+                //       controller.setPage(page);
+                //     },
+                //     icon: const Icon(
+                //       Icons.chevron_left,
+                //       size: 32,
+                //     )),
+                // IconButton(
+                //     onPressed: () {
+                //       //pressing right on last page  will go to the first,
+                //       final page = indexPage ==pages-1 ? 0 : indexPage + 1;
+                //
+                //       controller.setPage(page);
+                //     },
+                //     icon: const Icon(
+                //       Icons.chevron_right,
+                //       size: 32,
+                //     ))
               ]
             : null,
       ),
       body: SizedBox(
-        height: double.infinity,
-        width: double.infinity,
-        child:Stack(
-          children: [
-            PDFView(
-              onRender: (pages) => setState(() => this.pages = pages ?? 0),
-              onViewCreated: (controller) =>
-                  setState(() => this.controller = controller),
-              onPageChanged: (indexPage, _) =>
-                  setState(() => this.indexPage = indexPage ?? 0),
-              filePath: widget.file.path,
-              swipeHorizontal: true,
-              enableSwipe: true,
-              fitPolicy: FitPolicy.BOTH,
-              pageSnap: false,
-              //pageFling: false,
-              autoSpacing: false,
-            ),
-
-            Positioned(
-              height: height*30,
-              width: width*30,
-              left: 0,
-              bottom: 0,
-              child: InkWell(
-
-                onTap: (){final page = indexPage == 0?pages : indexPage - 1;
-
-                controller.setPage(page);},
+          height: double.infinity,
+          width: double.infinity,
+          child: Stack(
+            children: [
+              PDFView(
+                onRender: (pages) => setState(() => this.pages = pages ?? 0),
+                onViewCreated: (controller) =>
+                    setState(() => this.controller = controller),
+                onPageChanged: (indexPage, _) =>
+                    setState(() => this.indexPage = indexPage ?? 0),
+                filePath: widget.file.path,
+                swipeHorizontal: true,
+                enableSwipe: true,
+                fitPolicy: FitPolicy.BOTH,
+                pageSnap: false,
+                //pageFling: false,
+                autoSpacing: false,
               ),
-            ),
-            Positioned(
-              height: height*30,
-              width: width*30,
-              right: 0,
-              bottom: 0,
-              child: InkWell(
+              Positioned(
+                height: height * 30,
+                width: width * 30,
+                left: 0,
+                bottom: 0,
+                child: InkWell(
+                  onTap: () {
+                    final page = indexPage == 0 ? pages : indexPage - 1;
 
-                onTap: (){
-                  final page = indexPage ==pages-1 ? 0 : indexPage + 1;
-                controller.setPage(page);},
+                    controller.setPage(page);
+                  },
+                ),
               ),
-            )
-          ],
-        )
-      ),
+              Positioned(
+                height: height * 30,
+                width: width * 30,
+                right: 0,
+                bottom: 0,
+                child: InkWell(
+                  onTap: () {
+                    final page = indexPage == pages - 1 ? 0 : indexPage + 1;
+                    controller.setPage(page);
+                  },
+                ),
+              )
+            ],
+          )),
     );
   }
 }
