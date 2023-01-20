@@ -94,7 +94,7 @@ class _AssetBooksState extends State<AssetBooks> {
                     final path = "assets/books/${assetFilePaths[index]}";
                     final file = await PDFApi.loadAsset(path);
                     if (!mounted) return;
-                    PDFApi.openPDF(context, file);
+                    PDFApi.openPDF(context, file, "/assetbooks");
                   },
                 ); //book button here
               },

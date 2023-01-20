@@ -107,7 +107,7 @@ class _FirebaseBooksState extends State<FirebaseBooks> {
                     final url = firebaseFilePaths[index];
                     final file = await PDFApi.loadFirebase(url);
                     if (!mounted) return;
-                    PDFApi.openPDF(context, file);
+                    PDFApi.openPDF(context, file,"/firebasebooks");
                   },
                 ); //book button here
               },

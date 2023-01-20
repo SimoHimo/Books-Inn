@@ -19,6 +19,8 @@ class _NetworkBooksState extends State<NetworkBooks> {
     var width = (MediaQuery.of(context).size.width) / 100;
     Color lightcolor = const Color(0xfff5f9df);
     Color darkcolor = const Color(0xff051320);
+    Color hintcolor = Colors.black54;
+
     return Scaffold(
       resizeToAvoidBottomInset: true,
       appBar: AppBar(
@@ -55,7 +57,7 @@ class _NetworkBooksState extends State<NetworkBooks> {
                           if (value?.endsWith(".pdf") ?? true) {
                             return null;
                           } else {
-                            return "must be a pdf link";
+
                           }
                         },
                         controller: _controller,
@@ -66,6 +68,7 @@ class _NetworkBooksState extends State<NetworkBooks> {
                             color: darkcolor,
                           ),
                           hintText: "Enter PDF Link",
+                          hintStyle: TextStyle(color: hintcolor)
                         ),
                       ),
                     ),
@@ -82,7 +85,7 @@ class _NetworkBooksState extends State<NetworkBooks> {
                     Navigator.pushNamed(context, "/loadingscreen");
                     final file = await PDFApi.loadFromNetwork(url);
                     if (!mounted) return;
-                    PDFApi.openPDF(context, file);
+                    PDFApi.openPDF(context, file,"/networkbooks");
                   }
                 },
               ),
