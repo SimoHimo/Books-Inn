@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import '../buttons.dart';
-import '../api/pdf_api.dart';
-import 'pdf_viewer.dart';
 import 'package:url_launcher/url_launcher.dart';
+
+import '../api/pdf_api.dart';
+import '../buttons.dart';
+import 'pdf_viewer.dart';
 
 class Myhomepage extends StatefulWidget {
   const Myhomepage({Key? key}) : super(key: key);
@@ -23,10 +24,10 @@ class _MyhomepageState extends State<Myhomepage> {
     Color darkcolor = const Color(0xff051320);
 
     void launchURL(url) async {
-      if (await canLaunchUrl(url)) {
+      try {
         await launchUrl(url);
-      } else {
-        throw 'Could not launch $url';
+      } catch (e) {
+        //in case offline
       }
     }
 
@@ -58,7 +59,7 @@ class _MyhomepageState extends State<Myhomepage> {
               ),
               ListTile(
                 leading: Image(
-                  image: AssetImage("assets/images/instagram.png"),
+                  image: const AssetImage("assets/images/instagram.png"),
                   height: height * 3.8,
                 ),
                 title: const Text('Contact us', style: TextStyle(fontSize: 16)),
@@ -69,7 +70,7 @@ class _MyhomepageState extends State<Myhomepage> {
               ),
               ListTile(
                 leading: Image(
-                  image: AssetImage("assets/images/Linkedin.png"),
+                  image: const AssetImage("assets/images/Linkedin.png"),
                   height: height * 3.8,
                 ),
                 title: const Text('About Us', style: TextStyle(fontSize: 16)),
@@ -80,7 +81,7 @@ class _MyhomepageState extends State<Myhomepage> {
               ),
               ListTile(
                 leading: Image(
-                  image: AssetImage("assets/images/Github.png"),
+                  image: const AssetImage("assets/images/Github.png"),
                   height: height * 3.8,
                 ),
                 title:

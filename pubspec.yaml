@@ -44,6 +44,7 @@ dependencies:
   cached_network_image: ^3.2.3
   thumbnailer: ^2.1.0
   font_awesome_flutter: ^10.3.0
+  image: ^3.0.1
 
 
 

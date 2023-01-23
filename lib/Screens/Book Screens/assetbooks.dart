@@ -77,7 +77,7 @@ class _AssetBooksState extends State<AssetBooks> {
                   thumbnail: Thumbnail(
                     dataResolver: () async {
                       return (await DefaultAssetBundle.of(context)
-                              .load("assets/books/${assetFilePaths[index]}"))
+                          .load("assets/books/${assetFilePaths[index]}"))
                           .buffer
                           .asUint8List();
                     },

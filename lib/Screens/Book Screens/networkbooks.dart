@@ -32,7 +32,7 @@ class _NetworkBooksState extends State<NetworkBooks> {
         height: height * 100,
         width: width * 100,
         child: SingleChildScrollView(
-          physics: NeverScrollableScrollPhysics(),
+          physics: const NeverScrollableScrollPhysics(),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
@@ -107,7 +107,7 @@ class _NetworkBooksState extends State<NetworkBooks> {
               ),
               SizedBox(height: height * 4),
               const Text(
-                "Have to read a pdf, but dont want to save it in your device?",
+                "Have to read a pdf, but don't want to save it in your device?",
                 style: TextStyle(
                     fontWeight: FontWeight.bold, color: Colors.black54),
               ),
