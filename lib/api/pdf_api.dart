@@ -57,6 +57,7 @@ class PDFApi {
     }
   }
 
+
   static void openPDF(BuildContext context, file, pagename) =>
       Navigator.of(context).pushAndRemoveUntil(
           MaterialPageRoute(builder: (context) => PDFViewerPage(file: file)),

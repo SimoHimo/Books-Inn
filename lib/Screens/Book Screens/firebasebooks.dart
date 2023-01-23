@@ -24,16 +24,14 @@ class _FirebaseBooksState extends State<FirebaseBooks> {
 
 
 
+
   //to load names from firebase and write in a txt file.
   List<String> fileNames = [];
-
   Future<void> getFileNames() async {
     // Reference to Firebase Storage
     final storageRef = FirebaseStorage.instance.ref();
-
     // Get a list of all files in the storage
     final fileList = await storageRef.listAll();
-
     // Loop through the list of files
     for (Reference file in fileList.items) {
       // Get the file name
@@ -42,23 +40,19 @@ class _FirebaseBooksState extends State<FirebaseBooks> {
       if(!fileNames.contains(fileName)){
         fileNames.add(fileName);
       }
-
     }
     final directory = await getExternalStorageDirectory();
-    print(directory);
     // Create the file
-    final file = File('${directory?.path}/fileNames.txt');
+    final file = File('${directory?.path}/firebaseFileNames.txt');
     // Write the list to the file
-    file.writeAsString(fileNames.join(', '),mode: FileMode.append);
-    print(fileNames);
+    file.writeAsString(fileNames.join(', '));
   }
 
-
+  //to read files lists
   List<String> firebaseFilePaths = [];
   void getFirebaseFilePaths() async {
-    //to read files lists
     final directory = await getExternalStorageDirectory();
-    final file = File('${directory?.path}/fileNames.txt');
+    final file = File('${directory?.path}/firebaseFileNames.txt');
     String fileString = await file.readAsString();
 
     List<String> filePaths = fileString.split(', ');
@@ -66,6 +60,7 @@ class _FirebaseBooksState extends State<FirebaseBooks> {
       firebaseFilePaths.addAll(filePaths);
     });
   }
+
 
 
 
