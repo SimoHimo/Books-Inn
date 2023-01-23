@@ -1,7 +1,5 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart' show rootBundle;
 import 'package:path_provider/path_provider.dart';
 import '../../api/pdf_api.dart';
 import '../../buttons.dart';
@@ -15,7 +13,7 @@ class FirebaseBooks extends StatefulWidget {
 }
 
 class _FirebaseBooksState extends State<FirebaseBooks> {
-  List<String> firebaseFilePaths = [];
+
 
   @override
   void initState() {
@@ -23,9 +21,39 @@ class _FirebaseBooksState extends State<FirebaseBooks> {
     getFirebaseFilePaths();
   }
 
+
+
+
+
+  //to load names from firebase and write in a txt file.
+  List<String> fileNames = [];
+  Future<void> getFileNames() async {
+    // Reference to Firebase Storage
+    final storageRef = FirebaseStorage.instance.ref();
+    // Get a list of all files in the storage
+    final fileList = await storageRef.listAll();
+    // Loop through the list of files
+    for (Reference file in fileList.items) {
+      // Get the file name
+      String fileName = file.name;
+      // Add the file name to the list
+      if(!fileNames.contains(fileName)){
+        fileNames.add(fileName);
+      }
+    }
+    final directory = await getExternalStorageDirectory();
+    // Create the file
+    final file = File('${directory?.path}/firebaseFileNames.txt');
+    // Write the list to the file
+    file.writeAsString(fileNames.join(', '));
+  }
+
+  //to read files lists
+  List<String> firebaseFilePaths = [];
   void getFirebaseFilePaths() async {
-    String fileString =
-        await rootBundle.loadString('assets/filelists/firebasefiles.txt');
+    final directory = await getExternalStorageDirectory();
+    final file = File('${directory?.path}/firebaseFileNames.txt');
+    String fileString = await file.readAsString();
 
     List<String> filePaths = fileString.split(', ');
     setState(() {
@@ -33,39 +61,13 @@ class _FirebaseBooksState extends State<FirebaseBooks> {
     });
   }
 
-//for  latter
-  // //This is to get file names  from firebase automatically
-  // List<String> fileNames = [];
-  //
-  // Future<void> getFileNames() async {
-  //   // Reference to Firebase Storage
-  //   final storageRef = FirebaseStorage.instance.ref();
-  //
-  //   // Get a list of all files in the storage
-  //   final fileList = await storageRef.listAll();
-  //
-  //   // Loop through the list of files
-  //   for (Reference file in fileList.items) {
-  //     // Get the file name
-  //     String fileName = file.name;
-  //     // Add the file name to the list
-  //     fileNames.add(fileName);
-  //   }
-  // }
-  //
-  // Future<void> writeFile() async {
-  //   // Get the directory where the file will be created
-  //   final directory = await getExternalStorageDirectory();
-  //   // Create the file
-  //   final file = File('${directory?.path}/fileNames.txt');
-  //   // Write the list to the file
-  //   file.writeAsString(fileNames.join(', '));
-  // }
+
+
+
+
 
   @override
   Widget build(BuildContext context) {
-    // void openPDF(BuildContext context, file) => Navigator.of(context).push(
-    //     MaterialPageRoute(builder: (context) => PDFViewerPage(file: file)));
 
     const Color lightcolor = Color(0xfff5f9df);
     const Color darkcolor = Color(0xff051320);
@@ -74,6 +76,13 @@ class _FirebaseBooksState extends State<FirebaseBooks> {
 
     return Scaffold(
         appBar: AppBar(
+          actions: [
+            TextButton(onPressed: (){
+              getFileNames();
+              Navigator.pushNamed(context, "/homepage");
+
+            }, child: const Text("Refresh",style: TextStyle(color: Colors.white),))
+          ],
           backgroundColor: darkcolor,
           title: const Text("Server Books"),
         ),
