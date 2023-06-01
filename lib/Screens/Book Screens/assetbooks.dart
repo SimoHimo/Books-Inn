@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:thumbnailer/thumbnailer.dart';
 import '../../api/pdf_api.dart';
 import 'package:path/path.dart' as path;
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+//import 'package:cached_network_image/cached_network_image.dart';
 
 class AssetBooks extends StatefulWidget {
   const AssetBooks({Key? key}) : super(key: key);
@@ -21,7 +21,8 @@ class _AssetBooksState extends State<AssetBooks> {
     super.initState();
     getAssetFilePaths();
     Thumbnailer.addCustomMimeTypesToIconDataMappings(<String, IconData>{
-      'custom/mimeType': FontAwesomeIcons.key,
+      'custom/mimeType': Icons.book,
+
     });
   }
 
@@ -74,7 +75,8 @@ class _AssetBooksState extends State<AssetBooks> {
                 return BookButton(
                   height: height,
                   width: width,
-                  thumbnail: Thumbnail(
+                  thumbnail:
+                  Thumbnail(
                     dataResolver: () async {
                       return (await DefaultAssetBundle.of(context)
                               .load("assets/books/${assetFilePaths[index]}"))
@@ -82,13 +84,13 @@ class _AssetBooksState extends State<AssetBooks> {
                           .asUint8List();
                     },
                     mimeType: 'application/pdf',
-                    widgetSize: height * 11.5,
+                    widgetSize: height * 15,
                     useWrapper: true,
                     decoration: WidgetDecoration(
                       wrapperSize: height * 10,
                     ),
                   ),
-                  //const Icon(Icons.book,color: darkcolor,size: 40,),
+
                   name: path.basenameWithoutExtension(assetFilePaths[index]),
                   onTap: () async {
                     final path = "assets/books/${assetFilePaths[index]}";

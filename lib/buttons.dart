@@ -182,7 +182,7 @@ class BookButton extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Container(
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                     color: Colors.white,
                     borderRadius:
                         BorderRadius.vertical(top: Radius.circular(25))),
@@ -191,7 +191,7 @@ class BookButton extends StatelessWidget {
                 child: Center(child: thumbnail)),
             Center(
               child: Container(
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                     borderRadius:
                         BorderRadius.vertical(bottom: Radius.circular(25))),
                 height: height * 4.3,

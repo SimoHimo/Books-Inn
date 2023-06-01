@@ -32,7 +32,7 @@ class _NetworkBooksState extends State<NetworkBooks> {
         height: height * 100,
         width: width * 100,
         child: SingleChildScrollView(
-          physics: NeverScrollableScrollPhysics(),
+          physics: const NeverScrollableScrollPhysics(),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
@@ -57,6 +57,7 @@ class _NetworkBooksState extends State<NetworkBooks> {
                           if (value?.endsWith(".pdf") ?? true) {
                             return null;
                           } else {
+                            return "must be a pdf link";
 
                           }
                         },
