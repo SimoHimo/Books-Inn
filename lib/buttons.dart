@@ -1,14 +1,12 @@
-import 'package:books_and_literature/main.dart';
 import 'package:flutter/material.dart';
 
 class InkButton extends StatelessWidget {
-  const InkButton(
-      {Key? key,
-      required this.height,
-      required this.width,
-      required this.icon,
-      required this.name,
-      required this.onTap})
+  const InkButton({Key? key,
+    required this.height,
+    required this.width,
+    required this.icon,
+    required this.name,
+    required this.onTap})
       : super(key: key);
 
   final VoidCallback onTap;
@@ -73,12 +71,11 @@ class InkButton extends StatelessWidget {
 }
 
 class InkButton2 extends StatelessWidget {
-  const InkButton2(
-      {Key? key,
-      required this.height,
-      required this.width,
-      required this.name,
-      required this.onTap})
+  const InkButton2({Key? key,
+    required this.height,
+    required this.width,
+    required this.name,
+    required this.onTap})
       : super(key: key);
 
   final VoidCallback onTap;
@@ -130,13 +127,12 @@ class InkButton2 extends StatelessWidget {
 }
 
 class BookButton extends StatelessWidget {
-  const BookButton(
-      {Key? key,
-      required this.thumbnail,
-      required this.name,
-      required this.onTap,
-      required this.height,
-      required this.width})
+  const BookButton({Key? key,
+    required this.thumbnail,
+    required this.name,
+    required this.onTap,
+    required this.height,
+    required this.width})
       : super(key: key);
   final VoidCallback onTap;
   final Widget thumbnail;
@@ -146,64 +142,59 @@ class BookButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const Color textColor = Color(0xfff5f9df);
-    const Color buttonColor = Color(0xff051320);
-    return Container(
-      height: height * 4,
-      width: width * 6,
-      decoration: BoxDecoration(
-        boxShadow: [
-          BoxShadow(
-            color: buttonColor.withOpacity(0.3),
-            offset: const Offset(
-              3.0,
-              3.0,
-            ),
-            blurRadius: 5.0,
-            spreadRadius: 2.0,
-          ), //BoxShadow
-          const BoxShadow(
-            color: textColor,
-            offset: Offset(0.0, 0.0),
-            blurRadius: 0.0,
-            spreadRadius: 0.0,
-          ), //BoxShadow
-        ],
-        borderRadius: BorderRadius.circular(25.0),
-        border: Border.all(
-          color: darkcolor,
+    const Color lightColor = Color(0xfff5f9df);
+    const Color darkColor = Color(0xff051320);
+    return InkWell(
+      onTap: onTap,
+      child: Container(
+        height: height * 4,
+        width: width * 6,
+        decoration: BoxDecoration(
+          boxShadow: [
+            BoxShadow(
+              color: darkColor.withOpacity(0.3),
+              offset: const Offset(
+                3.0,
+                3.0,
+              ),
+              blurRadius: 5.0,
+              spreadRadius: 2.0,
+            ), //BoxShadow
+            const BoxShadow(
+              color: lightColor,
+              offset: Offset(0.0, 0.0),
+              blurRadius: 0.0,
+              spreadRadius: 0.0,
+            ), //BoxShadow
+          ],
+          borderRadius: BorderRadius.circular(width * 6),
+          border: Border.all(
+            color: darkColor,
+          ),
+          color: lightColor,
         ),
-        color: buttonColor,
-      ),
-      child: InkWell(
-        onTap: onTap,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             Container(
-                decoration: const BoxDecoration(
-                    color: Colors.white,
-                    borderRadius:
-                        BorderRadius.vertical(top: Radius.circular(25))),
-                height: height * 12,
+                decoration: BoxDecoration(
+                    color: darkColor,
+                    borderRadius: BorderRadius.vertical(top: Radius.circular(width * 5.8))
+                ),
+                height: height * 12.5,
                 width: width * 30,
                 child: Center(child: thumbnail)),
-            Center(
-              child: Container(
-                decoration: const BoxDecoration(
-                    borderRadius:
-                        BorderRadius.vertical(bottom: Radius.circular(25))),
-                height: height * 4.3,
-                width: width * 20,
-                child: Center(
-                  child: Text(
-                    name,
-                    overflow: TextOverflow.ellipsis,
-                    style: const TextStyle(
-                      color: Colors.white,
-                    ),
-                  ),
+            Padding(
+              padding: EdgeInsets.symmetric(vertical: height*0.9,horizontal: width*3),
+              child: Text(
+                name,
+                overflow: TextOverflow.ellipsis,
+                style: TextStyle(
+                  fontWeight: FontWeight.w500,
+
+                  fontSize: height * 1.4,
+                  color: darkColor,
                 ),
               ),
             ),

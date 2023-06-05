@@ -27,38 +27,16 @@ class _PDFViewerPageState extends State<PDFViewerPage> {
       appBar: AppBar(
         backgroundColor: const Color(0xff051320),
         title: Text(name),
-        actions: pages >= 2
-            ? [
+        actions:  [
+              IconButton(onPressed: (){}, icon: const Icon(Icons.download,color: Colors.white,)),
                 Center(
                   child: Text(text),
                 ),
                 SizedBox(
                   width: width * 5,
                 )
-                // IconButton(
-                //     onPressed: () {
-                //       //pressing left on first page will go to the last page.
-                //       final page = indexPage == 0?pages : indexPage - 1;
-                //
-                //       controller.setPage(page);
-                //     },
-                //     icon: const Icon(
-                //       Icons.chevron_left,
-                //       size: 32,
-                //     )),
-                // IconButton(
-                //     onPressed: () {
-                //       //pressing right on last page  will go to the first,
-                //       final page = indexPage ==pages-1 ? 0 : indexPage + 1;
-                //
-                //       controller.setPage(page);
-                //     },
-                //     icon: const Icon(
-                //       Icons.chevron_right,
-                //       size: 32,
-                //     ))
               ]
-            : null,
+            ,
       ),
       body: SizedBox(
           height: double.infinity,

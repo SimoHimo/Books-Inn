@@ -24,15 +24,16 @@ class Myapp extends StatelessWidget {
       initialRoute: "/homepage",
       routes: {
         "/homepage": (context) => const Myhomepage(),
+
         "/assetbooks": (context) => const AssetBooks(),
         "/devicebooks": (context) => const DeviceBooks(),
         "/firebasebooks": (context) => const FirebaseBooks(),
-        "/loadingscreen": (context) => const LoadScreen(),
         "/networkbooks": (context) => const NetworkBooks(),
+
+        "/loadingscreen": (context) => const LoadScreen(),
       },
     );
   }
 }
 
-Color lightcolor = const Color(0xfff5f9df);
-Color darkcolor = const Color(0xff051320);
+

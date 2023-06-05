@@ -94,37 +94,35 @@ class _FirebaseBooksState extends State<FirebaseBooks> {
           height: double.infinity,
           width: double.infinity,
           color: lightcolor,
-          child: Padding(
-            padding: const EdgeInsets.all(20.0),
-            child: GridView.builder(
-              physics: const BouncingScrollPhysics(),
-              shrinkWrap: true,
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 3,
-                  crossAxisSpacing: 20.0,
-                  mainAxisSpacing: 20.0,
-                  childAspectRatio: 0.75),
-              itemCount: firebaseFilePaths.length,
-              itemBuilder: (context, index) {
-                return BookButton(
-                  height: height,
-                  width: width,
-                  thumbnail: const Icon(
-                    Icons.book,
-                    color: darkcolor,
-                    size: 50,
-                  ),
-                  name: firebaseFilePaths[index],
-                  onTap: () async {
-                    Navigator.pushNamed(context, "/loadingscreen");
-                    final url = firebaseFilePaths[index];
-                    final file = await PDFApi.loadFirebase(url);
-                    if (!mounted) return;
-                    PDFApi.openPDF(context, file, "/firebasebooks");
-                  },
-                ); //book button here
-              },
-            ),
+          child: GridView.builder(
+            physics: const BouncingScrollPhysics(),
+            padding: EdgeInsets.symmetric(horizontal: width*5,vertical: height*2),
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 3,
+                crossAxisSpacing: 20.0,
+                mainAxisSpacing: 20.0,
+                childAspectRatio: 0.75),
+            itemCount: firebaseFilePaths.length,
+            itemBuilder: (context, index) {
+              return BookButton(
+                height: height,
+                width: width,
+                thumbnail: const Icon(
+                  Icons.book,
+                  color: lightcolor,
+                  size: 50,
+                ),
+                name: firebaseFilePaths[index],
+
+                onTap: () async {
+                  Navigator.pushNamed(context, "/loadingscreen");
+                  final url = firebaseFilePaths[index];
+                  final file = await PDFApi.loadFirebase(url);
+                  if (!mounted) return;
+                  PDFApi.openPDF(context, file, "/firebasebooks");
+                },
+              ); //book button here
+            },
           ),
         ));
   }
