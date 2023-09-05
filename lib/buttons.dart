@@ -186,14 +186,14 @@ class BookButton extends StatelessWidget {
                 width: width * 30,
                 child: Center(child: thumbnail)),
             Padding(
-              padding: EdgeInsets.symmetric(vertical: height*0.9,horizontal: width*3),
+              padding: EdgeInsets.symmetric(vertical: 0,horizontal: width*3),
               child: Text(
                 name,
                 overflow: TextOverflow.ellipsis,
                 style: TextStyle(
                   fontWeight: FontWeight.w500,
 
-                  fontSize: height * 1.4,
+                  fontSize: height * 1,
                   color: darkColor,
                 ),
               ),
