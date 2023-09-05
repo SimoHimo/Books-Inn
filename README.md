@@ -5,7 +5,7 @@ a PDF reader with online and local pdf book reading feature. it also has in-buil
 
 ![images](https://github.com/SimoHimo/Books-Inn/blob/master/github/Artboard%201.png)
 
-# [Download Here!](https://drive.google.com/uc?export=download&id=1v6_owE5MaaKOhGfioCvIbE9Ysf1OuK2G)
+# [Download Here!](https://drive.google.com/file/d/1X0mEy288dtfrthJUSHae-nEAQjV0t_ha/view)
 
 ![images](https://github.com/SimoHimo/Books-Inn/blob/master/github/Artboard%203.png)
 ![images](https://github.com/SimoHimo/Books-Inn/blob/master/github/Artboard%204.png)
